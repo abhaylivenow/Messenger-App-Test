@@ -87,7 +87,9 @@ public class OTP extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if(task.isSuccessful()){
-                            Toast.makeText(OTP.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(OTP.this,ProfileSetUp.class);
+                            startActivity(intent);
+                            finishAffinity();
                         }else {
                             Toast.makeText(OTP.this, "Login failed", Toast.LENGTH_SHORT).show();
                         }
