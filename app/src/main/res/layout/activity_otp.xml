@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/mobile_auth" />
 
     <TextView
-        android:id="@+id/phoneLbl"
+        android:id="@+id/otp_head_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -38,9 +38,9 @@
         android:gravity="center"
         android:text="Enter OTP To Verify"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/phoneLbl"
-        app:layout_constraintStart_toStartOf="@+id/phoneLbl"
-        app:layout_constraintTop_toBottomOf="@+id/phoneLbl" />
+        app:layout_constraintEnd_toEndOf="@+id/otp_head_txt"
+        app:layout_constraintStart_toStartOf="@+id/otp_head_txt"
+        app:layout_constraintTop_toBottomOf="@+id/otp_head_txt" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -59,31 +59,22 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <com.chaos.view.PinView
-                android:id="@+id/firstPinView"
-                style="@style/PinWidget.PinView"
+            <com.mukesh.OtpView
+                android:id="@+id/otp_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:cursorVisible="true"
-                android:inputType="text"
-                android:textColor="@color/purple_700"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:cursorColor="@color/material_on_primary_disabled"
-                app:cursorWidth="2dp"
-                app:hideLineWhenFilled="true"
                 android:layout_gravity="center"
-                app:itemCount="6"
-                app:itemHeight="48dp"
-                app:itemRadius="4dp"
-                app:itemSpacing="0dp"
-                app:itemWidth="48dp"
-                app:lineColor="@color/design_default_color_primary"
-                app:lineWidth="2dp"
-                app:viewType="rectangle"/>
+                android:layout_marginTop="72dp"
+                android:inputType="number"
+                android:itemBackground="@color/purple_200"
+                android:textColor="@android:color/white"
+                app:OtpItemCount="6"
+                app:OtpLineColor="@color/design_default_color_primary"
+                app:OtpViewType="line"
+                />
 
             <Button
-                android:id="@+id/continueBtn"
+                android:id="@+id/btn_verify_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
