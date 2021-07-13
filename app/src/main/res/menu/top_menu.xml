@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/search"
+        android:title="Search"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_search"/>
+
+    <item
+        android:id="@+id/group"
+        android:title="Group"
+        android:icon="@drawable/ic_status"/>
+
+    <item
+        android:id="@+id/invite"
+        android:title="Invite"
+        android:icon="@drawable/ic_call"/>
+
+    <item
+        android:id="@+id/setting"
+        android:title="Settings"
+        android:icon="@drawable/ic_call"/>
+</menu>
