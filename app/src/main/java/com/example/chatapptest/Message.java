@@ -5,7 +5,7 @@ public class Message {
     private String messageId;
     private String senderId;
     private long timeStamp;
-    private int feelings;
+    private int feelings = -1;
 
     public Message(){
         
