@@ -3,8 +3,10 @@ package com.example.chatapptest;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     UserAdapter userAdapter;
     ArrayList<User> userList;
 
+    TopStatusAdapter statusAdapter;
+    ArrayList<UserStatus> userStatuses;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +38,17 @@ public class MainActivity extends AppCompatActivity {
         // init Firebase Database and recycler view
         database = FirebaseDatabase.getInstance();
         userList = new ArrayList<>();
+        userStatuses = new ArrayList<>();
+
         userAdapter = new UserAdapter(this,userList);
+        statusAdapter = new TopStatusAdapter(this,userStatuses);
+
+        // below 4 lines of for horizontal scroll of status recycler view
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        binding.recyclerViewStatus.setLayoutManager(layoutManager);
+        binding.recyclerViewStatus.setAdapter(statusAdapter);
+
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(userAdapter);
 
