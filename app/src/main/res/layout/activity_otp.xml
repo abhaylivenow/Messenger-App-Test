@@ -68,6 +68,7 @@
                 android:inputType="number"
                 android:itemBackground="@color/purple_200"
                 android:textColor="@android:color/white"
+                android:focusableInTouchMode="true"
                 app:OtpItemCount="6"
                 app:OtpLineColor="@color/design_default_color_primary"
                 app:OtpViewType="line"

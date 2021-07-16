@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder>{
 
     Context context;
-    ArrayList<com.example.chatapptest.User> users;
+    ArrayList<User> users;
 
     public UserAdapter(Context context, ArrayList<com.example.chatapptest.User> users){
         this.context = context;

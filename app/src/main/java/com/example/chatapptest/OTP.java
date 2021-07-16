@@ -67,7 +67,7 @@ public class OTP extends AppCompatActivity {
                     @Override
                     public void onCodeSent(@NonNull String verifyId, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(verifyId, forceResendingToken);
-
+                        // otp is sent here
                         progressDialog.dismiss();
                         verificationId = verifyId;
 
