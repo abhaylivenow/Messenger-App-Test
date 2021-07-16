@@ -90,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(userAdapter);
 
+        binding.recyclerView.showShimmerAdapter();
+        binding.recyclerViewStatus.showShimmerAdapter();
+
         // get the details of stories of user
         database.getReference().child("stories").addValueEventListener(new ValueEventListener() {
             @Override
@@ -111,12 +114,36 @@ public class MainActivity extends AppCompatActivity {
                         status.setStatuses(statuses);
                         userStatuses.add(status);
                     }
+                    binding.recyclerViewStatus.hideShimmerAdapter();
                     statusAdapter.notifyDataSetChanged();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+        // go to the database, create object of user from database, and then populate it to Recycler view
+        database.getReference().child("users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userList.clear();
+                for(DataSnapshot postSnapshot : snapshot.getChildren()){
+
+                    User currentUser = postSnapshot.getValue(User.class);
+                    if(!FirebaseAuth.getInstance().getUid().equals(currentUser.getUid())){
+                        userList.add(currentUser);
+                    }
+
+                }
+                binding.recyclerView.hideShimmerAdapter();
+                userAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
@@ -137,28 +164,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 return false;
-            }
-        });
-
-        // go to the database, create object of user from database, and then populate it to Recycler view
-        database.getReference().child("users").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userList.clear();
-                for(DataSnapshot postSnapshot : snapshot.getChildren()){
-
-                    User currentUser = postSnapshot.getValue(User.class);
-                    if(!FirebaseAuth.getInstance().getUid().equals(currentUser.getUid())){
-                        userList.add(currentUser);
-                    }
-
-                }
-                userAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
     }
