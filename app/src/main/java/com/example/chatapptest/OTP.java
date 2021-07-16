@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -70,6 +72,11 @@ public class OTP extends AppCompatActivity {
                         // otp is sent here
                         progressDialog.dismiss();
                         verificationId = verifyId;
+
+                        // open key board forcefully in opt activity
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+                        binding.otpView.requestFocus();
 
                     }
                 }).build();
