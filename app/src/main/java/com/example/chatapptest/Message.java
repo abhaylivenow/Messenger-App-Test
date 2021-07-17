@@ -4,6 +4,7 @@ public class Message {
     private String message;
     private String messageId;
     private String senderId;
+    public String imageUrl;
     private long timeStamp;
     private int feelings = -1;
 
@@ -39,6 +40,14 @@ public class Message {
 
     public void setSenderId(String senderId) {
         this.senderId = senderId;
+    }
+
+    public void setImageUrl(String imageUrl){
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageUrl(){
+        return imageUrl;
     }
 
     public long getTimeStamp() {
