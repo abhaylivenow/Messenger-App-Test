@@ -11,6 +11,7 @@
         android:theme="@style/Theme.ChatAppTest">
         <activity android:name=".ChatActivity"
             android:windowSoftInputMode="stateAlwaysHidden"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
             ></activity>
         <activity android:name=".ProfileSetUp" />
         <activity android:name=".OTP" />

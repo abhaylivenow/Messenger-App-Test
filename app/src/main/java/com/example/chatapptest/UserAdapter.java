@@ -70,11 +70,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         holder.binding.username.setText(currentUser.getName());
         Glide.with(context).load(currentUser.getProfileImage()).placeholder(R.drawable.avatar).into(holder.binding.profile);
 
+        // send the details of user to chat activity
+        // details are shown in the toolbar of chat activity
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, com.example.chatapptest.ChatActivity.class);
                 intent.putExtra("name",currentUser.getName());
+                intent.putExtra("image",currentUser.getProfileImage());
                 intent.putExtra("uid", currentUser.getUid());
                 context.startActivity(intent);
             }
